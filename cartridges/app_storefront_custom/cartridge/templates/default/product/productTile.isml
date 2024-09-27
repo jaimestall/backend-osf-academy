@@ -20,8 +20,8 @@
         </isif>
     </div>
     <!-- END_dwmarker -->
-    ${'Test ' + pdict.product.price.list.value + ' ' + pdict.product.price.sales.value + ' % OFF'}
+    <iscomment> ${'Test ' + pdict.product.price.list.value + ' ' + pdict.product.price.sales.value + ' % OFF'}
     <iscript>
         ${JSON.stringify(pdict.product)});
-    </iscript>
+    </iscript> </iscomment>
 </div>
