@@ -3,7 +3,7 @@
 const base = module.superModule
 
 function calculatePercentageOff(standardPrice, salePrice) {
-    var percentageOff = (1 - salePrice / standardPrice) * 100;
+    var percentageOff = (1 - (salePrice / standardPrice)) * 100;
 
     return percentageOff;
 }
