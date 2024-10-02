@@ -145,11 +145,10 @@
         </div>
     </isobject>
     
-    <!-- Include the suggested products -->
-    <isinclude template="product/suggestedProducts" />
-    <isscript>
-        var Logger = require('dw/system/Logger');
-        Logger.debug('Suggested Products: {0}', JSON.stringify(pdict.suggestedProducts));
-    </isscript>
+    <div class="row product-grid">
+        <!-- Include the suggested products -->
+        <isinclude template="product/suggestedProducts" />
+    </div>
+
 </isdecorate>
 

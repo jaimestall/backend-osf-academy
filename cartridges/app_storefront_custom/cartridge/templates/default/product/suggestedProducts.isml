@@ -1,10 +1,5 @@
 <isloop items="${pdict.suggestedProducts}" var="suggestedProduct" begin="${0}" end="${3}">
-    <isinclude template="product/productTile" />
-    <isprint value="${suggestedProduct}" />
-    <p>Product Name: ${suggestedProduct.name}</p>
-    <p>Product ID: ${suggestedProduct.ID}</p>
-    <iscomment> <p>JSON Stringify: ${JSON.stringify(suggestedProduct)}</p>
-    <p>Product Name: ${suggestedProduct.name}</p>
-    <p>Product ID: ${pdict.productId}</p>
-    <p>Category ID: ${pdict.categoryId}</p> </iscomment>
+    <div class="col-md-2">
+            <isinclude url="${URLUtils.url('Tile-Show', 'pid', suggestedProduct.ID, 'pview', 'tile', 'ratings', true, 'swatches', true)}"/>
+    </div>
 </isloop>
