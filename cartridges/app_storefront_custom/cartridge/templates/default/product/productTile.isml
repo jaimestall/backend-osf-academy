@@ -19,9 +19,4 @@
             <isinclude template="product/productTileFooter" />
         </isif>
     </div>
-    <!-- END_dwmarker -->
-    <iscomment> ${'Test ' + pdict.product.price.list.value + ' ' + pdict.product.price.sales.value + ' % OFF'}
-    <iscript>
-        ${JSON.stringify(pdict.product)});
-    </iscript> </iscomment>
 </div>

@@ -1,0 +1,8 @@
+<div>
+    <p>The following product was added to your cart.</p>
+    <p>${'image'}</p>
+    <p>Product name: ${pdict.currentBasket.productLineItems[0].productName}</p>
+    <p>Product description: ${'product description'}</p>
+    <p>Each - USD ${pdict.currentBasket.productLineItems[0].price}</p>
+    <p>Quantity: ${pdict.currentBasket.productLineItems[0].quantity.value}</p>
+</div>
