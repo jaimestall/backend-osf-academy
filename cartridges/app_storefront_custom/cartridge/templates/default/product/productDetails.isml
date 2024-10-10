@@ -131,24 +131,23 @@
                     </div>
                 </div>
             </div>
-
+            
             <div>
                 <isslot id="cts-recommendations-m" description="Complete the set products" context="global" context-object="${pdict.product.raw}" />
             </div>
-
+            
             <isset name="loopState" value="${{count: 1}}" scope="page" />
             <isinclude template="product/components/descriptionAndDetails" />
 
-            <div class="recommendations">
+            <div class="col-sm-12 col-md-4 col-lg-3 p-0 mt-4">
+                <h2>Recommendations</h2>
+            </div>
+            <div class="recommendations row ">
                 <isslot id="product-recommendations-m" description="Recommended products" context="global" context-object="${pdict.product.raw}" />
+                <isinclude template="product/suggestedProducts" />
             </div>
         </div>
     </isobject>
-    
-    <div class="row product-grid">
-        <!-- Include the suggested products -->
-        <isinclude template="product/suggestedProducts" />
-    </div>
 
 </isdecorate>
 

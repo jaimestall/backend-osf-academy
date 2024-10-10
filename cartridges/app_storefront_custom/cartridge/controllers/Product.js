@@ -26,7 +26,6 @@ function searchProductsInCategory(categoryId) {
 
     return products;
 }
-
  
 server.append('Show', function (req, res, next) {
     var viewData = res.getViewData();
@@ -46,7 +45,6 @@ server.append('Show', function (req, res, next) {
         
         // If product is not null, set the viewData with the product and the primary category
         if (product) {
-            viewData.product = product;
             var primaryCategory = product.getPrimaryCategory();
             viewData.categoryId = primaryCategory ? primaryCategory.getID() : null;
             
