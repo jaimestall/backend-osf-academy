@@ -1,9 +1,9 @@
 {
-    "@type-id": "custom.ExportToCSVJob",
+    "@type-id": "custom.ExportOrdersToCSV",
     "@supports-parallel-execution": "false",
     "@supports-site-context": "true",
     "@supports-organization-context": "false",
-    "module": "cartridges/app_storefront_custom/cartridge/scripts/job/ExportToCSVJob.js",
+    "module": "app_storefront_custom/cartridge/scripts/job/ExportOrdersToCSV.js",
     "function": "execute",
     "transactional": "true",
     "parameters": {
