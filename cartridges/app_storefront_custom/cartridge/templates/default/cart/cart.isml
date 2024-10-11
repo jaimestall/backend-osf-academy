@@ -64,6 +64,13 @@
                             </isif>
                         </isif>
                     </isloop>
+                    <div>
+                        <isif condition="${pdict.customMessage}">
+                            <div class="alert alert-info custom-cart-message">
+                                ${pdict.customMessage}
+                            </div>
+                        </isif>
+                    </div>
                     <isinclude template="cart/cartApproachingDiscount" />
                 </div>
                 <!---totals, and checkout actions--->
@@ -91,8 +98,5 @@
     <div class="container">
         <isslot id="cart-recommendations-m" description="Recommended products" context="global" />
     </div>
-    ${pdict.currentBasket.productLineItems[0].productName}
-    ${pdict.currentBasket.productLineItems[0].quantity.value}
-    ${pdict.currentBasket.productLineItems[0].price}
-    ${pdict.currentBasket.productLineItems[0].productID}
+
 </isdecorate>

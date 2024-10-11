@@ -1,27 +1,36 @@
-'use strict';
- 
+'use strict'
+
 var server = require('server');
  
 server.extend(module.superModule);
- 
+
 server.append('Show', function (req, res, next) {
-    // var productHelpers = require('*/cartridge/scripts/helpers/productHelpers');
-    // var discountPercentage = null;
-    
+    var productHelpers = require('*/cartridge/scripts/helpers/productHelpers');
     var viewData = res.getViewData();
+
+    var salePrice = parseInt(viewData.product.price.sales.value);
+    if(viewData.product.price.list) {
+        var standardPrice = parseInt(viewData.product.price.list.value);
+    } else {
+        var standardPrice = parseInt(viewData.product.price.sales.value)
+    }
     
-    // var salePrice = viewData.product.price.sales.value;
-    // var standardPrice = viewData.product.price.list.value;
+    // productId from the URL
+    var productId = String(req.querystring.pid);
 
-    // if(salePrice) {
-    //     discountPercentage = productHelpers.calculatePercentageOff(standardPrice, salePrice);
-    //     viewData.discount = discountPercentage;
-    //     res.setViewData(viewData)
-    // }
+    if(salePrice < standardPrice) {
+        var discount = productHelpers.calculatePercentageOff(standardPrice, salePrice)
+        viewData.discount = discount
+    }
 
+    viewData.salePrice = salePrice
+    viewData.standardPrice = standardPrice
+    viewData.productId = productId
     res.setViewData(viewData);
 
     return next();
+
 });
+
 
 module.exports = server.exports();

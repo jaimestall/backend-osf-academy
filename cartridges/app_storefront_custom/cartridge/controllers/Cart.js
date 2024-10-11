@@ -1,31 +1,35 @@
 'use strict';
  
 var server = require('server');
-var BasketMgr = require('dw/order/BasketMgr'); // Gerencia o carrinho do usuário
- 
 server.extend(module.superModule);
+var BasketMgr = require('dw/order/BasketMgr');
+
+function getCartTotal() {
+    var currentCart = BasketMgr.getCurrentBasket();
+
+    if (currentCart) {
+        var totalGrossPrice = currentCart.getTotalGrossPrice();
+        return totalGrossPrice.value;
+    }
+
+    return 0;
+}
+
  
 server.append('Show', function (req, res, next) {
-    var currentBasket = BasketMgr.getCurrentOrNewBasket();
     var viewData = res.getViewData();
+    var cartTotal = getCartTotal();
+    var customMessage = ''
 
-    viewData.currentBasket = currentBasket;
+    if(cartTotal > 200) {
+        viewData.cartTotal = cartTotal;
+        customMessage = "Your cart total (" + cartTotal + "$) exceeds 200$!";
+        viewData.customMessage = customMessage;
+    }
+
     res.setViewData(viewData);
 
-    return next();
-});
 
-server.post('AddProduct', function (req, res, next) {
-    var viewData = res.getViewData();
-    var currentBasket = BasketMgr.getCurrentOrNewBasket();
-    var productLineItems = currentBasket.productLineItems;
-    var product = req.form.pid;
-    // var quantity = parseInt(req.form.quantity, 10);
-    // var productToAdd = productLineItems.addProductToBasket(product, quantity);
-    viewData.productLineItems = productLineItems;
-    viewData.product = product;
-    res.setViewData(viewData);
-    
     return next();
 });
 
