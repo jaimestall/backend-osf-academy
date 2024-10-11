@@ -18,10 +18,10 @@
         <isif condition="${pdict.display.ratings !== false}">
             <isinclude template="product/productTileFooter" />
         </isif>
+        <div class="text-danger font-weight-bold">
+            <isif condition="${pdict.product.price.sales.value < pdict.product.price.list.value}">
+                ${'BEST DEAL ' + pdict.discount + ' % OFF'}
+            </isif>
+        </div>
     </div>
-    <!-- END_dwmarker -->
-    <iscomment> ${'Test ' + pdict.product.price.list.value + ' ' + pdict.product.price.sales.value + ' % OFF'}
-    <iscript>
-        ${JSON.stringify(pdict.product)});
-    </iscript> </iscomment>
 </div>
