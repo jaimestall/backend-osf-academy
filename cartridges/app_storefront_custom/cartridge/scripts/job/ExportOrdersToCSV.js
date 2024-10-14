@@ -3,12 +3,11 @@
 var OrderMgr = require('dw/order/OrderMgr');
 var FileWriter = require('dw/io/FileWriter');
 var CSVStreamWriter = require('dw/io/CSVStreamWriter');
+var File = require('dw/io/File');
 
 function execute(parameters) {
-    var File = require('dw/io/File');
-    var filePath = parameters.filePath;
-    var csvFile = new File(filePath);
-    var fileWriter = new FileWriter(csvFile);
+    var file = new File(File.IMPEX + '/orders.csv');
+    var fileWriter = new FileWriter(file);
     var csvWriter = new CSVStreamWriter(fileWriter);
 
     try {
